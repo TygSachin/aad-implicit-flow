@@ -65,7 +65,7 @@
         var params = [];
         params.push('client_id=' + clientId);
         params.push('response_type=id_token token');
-        params.push('redirect_uri=http://localhost:10001') //https://coderuse.github.io/aad-implicit-flow/');
+        params.push('redirect_uri=https://coderuse.github.io/aad-implicit-flow/');
         params.push('scope=openid ' + scope + '/user_impersonation');
         params.push('response_mode=fragment');
         params.push('state=12345');
