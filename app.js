@@ -1,7 +1,7 @@
-(function(){
+(function () {
     'use strict';
 
-    function getHash (hash) {
+    function getHash(hash) {
         if (hash.indexOf("#/") > -1) {
             hash = hash.substring(hash.indexOf("#/") + 2);
         }
@@ -16,7 +16,7 @@
         return decodeURIComponent(s.replace(pl, " "));
     }
 
-    function deserialize (query) {
+    function deserialize(query) {
         var match;
         var search = /([^&=]+)=([^&]*)/g;
         var obj = {};
@@ -53,25 +53,48 @@
         return result;
     }
 
-    window.generateToken = function(){
+    window.generateToken = function () {
         var tenant = document.getElementById('id-tenant').value;
+        var clientId = document.getElementById('id-client-id').value;
+        var scope = document.getElementById('id-scope').value;
+        loginRedirect(tenant, clientId, scope);
+    };
+
+    function loginRedirect(tenant, clientId, scope) {
         var loginUri = 'https://login.microsoftonline.com/' + tenant + '/oauth2/v2.0/authorize?';
         var params = [];
-        var clientId = document.getElementById('id-client-id').value;
         params.push('client_id=' + clientId);
         params.push('response_type=id_token token');
-        params.push('redirect_uri=https://coderuse.github.io/aad-implicit-flow');
-        var scope = document.getElementById('id-scope').value + '/user_impersonation';
-        params.push('scope=openid ' + scope);
+        params.push('redirect_uri=http://localhost:10001') //https://coderuse.github.io/aad-implicit-flow/');
+        params.push('scope=openid ' + scope + '/user_impersonation');
         params.push('response_mode=fragment');
         params.push('state=12345');
         params.push('nonce=678910');
         loginUri += decodeURIComponent(params.join('&'));
-        window.location.replace(loginUri);
-    };
 
-    
-    var intrvl = setInterval(function(){
+        var rememberMe = document.getElementById('id-remember-me').checked;
+        if (rememberMe) {
+            localStorage.setItem('tenant', tenant);
+            localStorage.setItem('clientId', clientId);
+            localStorage.setItem('scope', scope);
+        }
+        else {
+            localStorage.clear();
+        }
+        window.location.replace(loginUri);
+    }
+
+    var pTenant = localStorage.getItem('tenant');
+    var pClientId = localStorage.getItem('clientId');
+    var pScope = localStorage.getItem('scope');
+    if (pTenant && pClientId && pScope) {
+        document.getElementById('id-tenant').value = pTenant;
+        document.getElementById('id-client-id').value = pClientId;
+        document.getElementById('id-scope').value = pScope;
+        document.getElementById('id-remember-me').checked = true;
+    }
+
+    var intrvl = setInterval(function () {
         var accessToken = isSignInProgress();
         if (accessToken) {
             clearInterval(intrvl);
@@ -80,8 +103,11 @@
                 return;
             }
             else {
+                //window.location = './';
+                // document.getElementById('id-access-token').innerHTML = 'Access-Token: ' + accessToken;
+                // document.getElementById('id-access-token').classList.toggle('invisible');
                 console.log(accessToken);
             }
-        }            
+        }
     }, 3000);
 }());
