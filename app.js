@@ -44,9 +44,8 @@
                         }
                     };
                 }
-                else if (parameters.hasOwnProperty('access_code')) {
-                    var accessCode = parameters['access_code'];
-                    return accessCode;
+                else if (parameters.hasOwnProperty('access_token')) {
+                    return parameters['access_token'];
                 }
             }
         }
@@ -73,15 +72,15 @@
 
     
     var intrvl = setInterval(function(){
-        var accessCode = isSignInProgress();
-        if (accessCode) {
+        var accessToken = isSignInProgress();
+        if (accessToken) {
             clearInterval(intrvl);
-            if (accessCode.error) {
-                console.log(accessCode.error.description);
+            if (accessToken.error) {
+                console.log(accessToken.error.description);
                 return;
             }
             else {
-                console.log(accessCode);
+                console.log(accessToken);
             }
         }            
     }, 3000);
