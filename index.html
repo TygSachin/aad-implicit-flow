@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Azure Active Directory::Access Token Genertor With Implicit Flow">
+    <meta name="author" content="Arnab Das, arnab@coderuse.com>">
+    
+    <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#000000">
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <title>Azure Active Directory::Access Token Genertor With Implicit Flow</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="app.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <form class="form-signin" onsubmit="generateToken();return false">
+      <img class="mb-4" src="https://assets-cdn.github.com/pinned-octocat.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">AAD details</h1>
+
+      <label class="sr-only">Tenant ID</label>
+      <input type="text" class="form-control" placeholder="Tenant ID" id="id-tenant" required autofocus>
+
+      <label class="sr-only">App ID</label>
+      <input type="text" class="form-control" placeholder="App ID" id="id-client-id" required>
+
+      <label class="sr-only">Scope App ID URI</label>
+      <input type="text" class="form-control" placeholder="Scope App ID URI" id="id-scope" required>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Generate Access Token</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+
+    <script src="app.js"></script>
+  </body>
+</html>
