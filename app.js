@@ -68,7 +68,7 @@
         params.push('state=12345');
         params.push('nonce=678910');
         loginUri += decodeURIComponent(params.join('&'));
-        this.window.location.replace(loginUri);
+        window.location.replace(loginUri);
     };
 
     
@@ -80,9 +80,9 @@
                 console.log(accessCode.error.description);
                 return;
             }
-        }
-        else {
-            console.log(accessCode);
+            else {
+                console.log(accessCode);
+            }
         }            
     }, 3000);
 }());
