@@ -1,6 +1,6 @@
 # AAD Authentication With Implicit Flow
 
-[site](https://coderuse.github.io/aad-implicit-flow/)
+[coderuse.github.io/aad-implicit-flow/](https://coderuse.github.io/aad-implicit-flow/){:target="_blank"}
 
 ### Overview
 
