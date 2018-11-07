@@ -22,8 +22,7 @@
 
 <body class="text-center">
   <form class="form-signin" onsubmit="generateToken();return false">
-    <img class="mb-4" src="https://assets-cdn.github.com/pinned-octocat.svg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">AAD details</h1>
+    <img class="mb-4" src="https://hfweb-assets.s3.amazonaws.com/logo/azure-active-directory.png" alt="">
 
     <label class="sr-only">Tenant ID</label>
     <input type="text" class="form-control" placeholder="Tenant ID" id="id-tenant" required autofocus>
@@ -42,6 +41,8 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Generate Access Token</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
   </form>
+  
+  <a href="https://github.com/coderuse/aad-implicit-flow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
   <div class="alert alert-success invisible" role="alert" id="id-access-token">
   </div>
