@@ -53,20 +53,13 @@
         return result;
     }
 
-    window.generateToken = function () {
-        var tenant = document.getElementById('id-tenant').value;
-        var clientId = document.getElementById('id-client-id').value;
-        var scope = document.getElementById('id-scope').value;
-        loginRedirect(tenant, clientId, scope);
-    };
-
     function loginRedirect(tenant, clientId, scope) {
         var loginUri = 'https://login.microsoftonline.com/' + tenant + '/oauth2/v2.0/authorize?';
         var params = [];
         params.push('client_id=' + clientId);
         params.push('response_type=id_token token');
         params.push('redirect_uri=https://coderuse.github.io/aad-implicit-flow/');
-        params.push('scope=openid ' + scope + '/user_impersonation');
+        params.push('scope=openid ' + scope);
         params.push('response_mode=fragment');
         params.push('state=12345');
         params.push('nonce=678910');
@@ -83,6 +76,20 @@
         }
         window.location.replace(loginUri);
     }
+
+    window.copyToClipboard = function(){
+        var textarea = document.getElementById('id-access-token');
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+    };
+
+    window.generateToken = function () {
+        var tenant = document.getElementById('id-tenant').value;
+        var clientId = document.getElementById('id-client-id').value;
+        var scope = document.getElementById('id-scope').value;
+        loginRedirect(tenant, clientId, scope);
+    };
 
     var pTenant = localStorage.getItem('tenant');
     var pClientId = localStorage.getItem('clientId');
@@ -103,9 +110,7 @@
                 return;
             }
             else {
-                //window.location = './';
-                // document.getElementById('id-access-token').innerHTML = 'Access-Token: ' + accessToken;
-                // document.getElementById('id-access-token').classList.toggle('invisible');
+                document.getElementById('id-access-token').value = accessToken;
                 console.log(accessToken);
             }
         }
