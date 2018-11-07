@@ -1,6 +1,6 @@
 # AAD Authentication With Implicit Flow
 
-[coderuse.github.io/aad-implicit-flow/](https://coderuse.github.io/aad-implicit-flow/){:target="_blank"}
+[coderuse.github.io/aad-implicit-flow/](https://coderuse.github.io/aad-implicit-flow/)
 
 ### Overview
 
@@ -8,7 +8,7 @@ This is an over-simplified implementation of acquiring [access token](https://do
 
 ### Background
 
-AAD offers two versions of API. There are very little difference between the processes to authenticate with [version 1](https://docs.microsoft.com/en-us/azure/active-directory/develop/v1-oauth2-implicit-grant-flow) [version 2](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) with implicit flow. With the newer version `scope` to be used as parameter instead of `resource` and only fully qualified permissions are accepted instead of generic [app id uri](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameregister-aregister-your-app-service-app-with-azure-active-directory). So, with latest one for example `app-id-uri/user_impersonation` to be used instead of `app-id-uri`. `user_impersonation` is the default permission created automatically while creating the app. This app is intended for acquiring access token from AAD. 
+AAD offers two versions of API. There are very little difference between the processes to authenticate with [version 1](https://docs.microsoft.com/en-us/azure/active-directory/develop/v1-oauth2-implicit-grant-flow) and [version 2](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) with implicit flow. With the newer version `scope` to be used as parameter instead of `resource` and only fully qualified permissions are accepted instead of generic [app id uri](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication#a-nameregister-aregister-your-app-service-app-with-azure-active-directory). So, with latest one for example `app-id-uri/user_impersonation` to be used instead of `app-id-uri`. `user_impersonation` is the default permission created automatically while creating the app. This app is intended for acquiring access token from AAD. 
 
 ### How To Use
 
